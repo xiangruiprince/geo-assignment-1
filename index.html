@@ -1,0 +1,124 @@
+<!DOCTYPE HTML">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GeoWeb Mapping Application</title>
+    
+    <!--main stylesheet-->
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <!--leaflet stylesheet-->
+    <link rel="stylesheet" href="css/leaflet.css"/>
+    <!--[if lte IE8]>
+    <link rel="stylesheet" href=css/leaflet.ie.css"/>
+    <![endif]-->
+		
+	<!--Font Awesome and Twitter Bootstrap-->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+		
+	<!--Leaflet Plugin-->
+	<link rel="stylesheet" href="css/L.Control.Zoomslider.css" />
+	<link rel="stylesheet" href="css/L.Control.Locate.css" />
+	<link rel="stylesheet" href="css/leaflet.awesome-markers.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/MarkerCluster.Default.css"/>
+	<link rel="stylesheet" href="css/l.geosearch.css"/>
+	
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+  </head>
+  <body>
+	  
+    <!--div for the map-->
+	<ul id='map-ui'></ul>
+    <div id="map"></div>
+	
+	
+	<div id='legend-content'>
+	  <div class='my-legend'>
+	  <div class='legend-title'>Map Legend</div>
+	  <div class='legend-scale'>
+		<div id="choropleth-legend">
+			<svg height="40" id="choropleth-svg">
+		   	   	<rect width="35" height="10" x="0" style="fill: #fff7ec;" class="choropleth-bar"></rect>
+				<rect width="35" height="10" x="35" style="fill: #fee8c8;" class="choropleth-bar"></rect>
+				<rect width="35" height="10" x="70" style="fill: #fdd49e;" class="choropleth-bar"></rect>
+				<rect width="35" height="10" x="105" style="fill: #fdbb84;" class="choropleth-bar"></rect>
+				<rect width="35" height="10" x="140" style="fill: #fc8d59;" class="choropleth-bar"></rect>
+				<rect width="35" height="10" x="175" style="fill: #ef6548;" class="choropleth-bar"></rect>
+				<rect width="35" height="10" x="210" style="fill: #d7301f;" class="choropleth-bar"></rect>
+				<rect width="35" height="10" x="245" style="fill: #b30000;" class="choropleth-bar"></rect>
+				<rect width="35" height="10" x="280" style="fill: #7f0000;" class="choropleth-bar"></rect>
+				<text y="25" id="legendMinLabel">0</text>
+				<text y="25" x="256" id="legendMaxLabel">9608044</text>
+			</svg>
+		</div>
+		<div id="mrt-legend">
+			<svg height="70">
+				<rect width="35" height="5" y="10" x="0" style="fill: #39ac00;"></rect>
+				<text y="17" x="40">East West Line</text>
+				<rect width="35" height="5" y="10" x="160" style="fill: #dc0000;"></rect>
+				<text y="17" x="200">North South Line</text>
+				<rect width="35" height="5" y="30" x="0" style="fill: #8000a5;"></rect>
+				<text y="37" x="40">North East Line</text>
+				<rect width="35" height="5" y="30" x="160" style="fill: #F4B234;"></rect>
+				<text y="37" x="200">Circle Line</text>
+				<rect width="35" height="5" y="50" x="0" style="fill: #0354A6;"></rect>
+				<text y="57" x="40">Downtown Line</text>
+			<svg>
+		</div>
+		<div id="education-legend">
+			<img src="img/green-marker.png" class="legend-marker">
+			<span class="legend-text"> Tier 1</span>
+			<img src="img/orange-marker.png" class="legend-marker">
+			<span class="legend-text"> Tier 2</span>
+			<img src="img/red-marker.png" class="legend-marker">
+			<span class="legend-text"> Tier 3</span>
+		</div>
+	  </div>
+	  </div>
+	  
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	          <h4 class="modal-title" id="myModalLabel">Upload GEOJson</h4>
+	        </div>
+	        <div class="modal-body">
+				<span> To upload new geospatial data, please select the file using the our uploader.<br/> (Only accept 					.geojson file)</span><br/><br/>
+				<form action="upload.php" method='POST' enctype='multipart/form-data'>
+				  <input type="file" name="file" id="file">
+				  <input type="submit" id="upload-submit">
+				</form>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	          <button type="button" id="upload-temp-submit" class="btn btn-success">Submit</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	
+    
+    <!--libraries-->
+    <script src="js/leaflet-src.js"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="js/L.Control.Zoomslider.js"></script>
+	<script src="js/L.Control.Locate.js"></script>
+	<script src="js/leaflet.awesome-markers.js"></script>
+	<script src="js/leaflet.markercluster.js"></script>
+	<script src="js/leaflet-osm.js"></script>
+	<script src="js/l.control.geosearch.js"></script>
+	<script src="js/l.geosearch.provider.openstreetmap.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	
+	<script src="js/leaflet.geocsv.js"></script>
+    
+    <!--link to main javascript file-->
+    <script src="js/main.js"></script>
+	
+	
+	
+  </body>
+</html>
